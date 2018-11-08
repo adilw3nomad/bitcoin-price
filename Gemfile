@@ -6,6 +6,11 @@ gem 'sinatra'
 #use thin as app server
 gem 'thin'
 
-group :test do 
-
+gem 'httparty'
+ 
+group :test do
+  gem 'minitest'
+  gem 'webmock'
+  gem 'vcr'
+  gem 'rake'
 end
