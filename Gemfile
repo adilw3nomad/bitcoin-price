@@ -10,6 +10,7 @@ gem 'httparty'
  
 group :test do
   gem 'minitest'
+  gem 'minitest-reporters'
   gem 'webmock'
   gem 'vcr'
   gem 'rake'
