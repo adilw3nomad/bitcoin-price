@@ -18,6 +18,13 @@ describe CoinMarketCapWrapper do
       end
     end
 
+    it 'should strip any whitespace from the id parameter' do
+      VCR.use_cassette('bitcoin_ticker_response') do
+        response = CoinMarketCapWrapper.ticker '1      '
+        response.code.must_equal 200
+      end
+    end
+
     it 'should receive a 404 if called with an invalid ID' do
       VCR.use_cassette('non_existent_ticker_response') do
         response = CoinMarketCapWrapper.ticker '0'

@@ -7,6 +7,6 @@ module CoinMarketCapWrapper
   base_uri 'https://api.coinmarketcap.com/v2'
 
   def self.ticker(id, currency = 'USD')
-    get("/ticker/#{id}?convert=#{currency}")
+    get("/ticker/#{id.strip}?convert=#{currency}")
   end
 end
