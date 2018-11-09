@@ -20,4 +20,10 @@ describe CoinMarketCapWrapper::Ticker do
       bitcoin_gbp_ticker.crypto_id.must_equal '1'
     end
   end
+
+  describe '#ticker_data' do 
+    it 'must have a ticker_data method' do 
+      bitcoin_gbp_ticker.must_respond_to :ticker_data
+    end
+  end
 end

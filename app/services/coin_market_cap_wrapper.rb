@@ -15,5 +15,7 @@ module CoinMarketCapWrapper
     def initialize(opts)
       @currency, @crypto_id = opts.values_at(:currency, :crypto_id)
     end
+
+    def ticker_data; end
   end
 end
