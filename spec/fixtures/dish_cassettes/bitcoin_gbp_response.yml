@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.coinmarketcap.com/v2/ticker/1?convert=GBP
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+    headers:
+      Date:
+      - Fri, 09 Nov 2018 01:44:01 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de3983b0238a46639324a02882f1f0c3a1541727841; expires=Sat, 09-Nov-19
+        01:44:01 GMT; path=/; domain=.coinmarketcap.com; HttpOnly; Secure
+      Location:
+      - https://api.coinmarketcap.com/v2/ticker/1/?convert=GBP
+      Cf-Cache-Status:
+      - EXPIRED
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 476c977fbe09bff4-MAN
+    body:
+      encoding: UTF-8
+      string: |-
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+        <title>Redirecting...</title>
+        <h1>Redirecting...</h1>
+        <p>You should be redirected automatically to target URL: <a href="https://api.coinmarketcap.com/v2/ticker/1/?convert=GBP">https://api.coinmarketcap.com/v2/ticker/1/?convert=GBP</a>. If not click the link.
+    http_version: 
+  recorded_at: Fri, 09 Nov 2018 01:44:01 GMT
+- request:
+    method: get
+    uri: https://api.coinmarketcap.com/v2/ticker/1/?convert=GBP
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - __cfduid=de3983b0238a46639324a02882f1f0c3a1541727841
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 Nov 2018 01:44:01 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1028'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - HIT
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 476c97815edbbfbd-MAN
+    body:
+      encoding: UTF-8
+      string: "{\n    \"data\": {\n        \"id\": 1, \n        \"name\": \"Bitcoin\",
+        \n        \"symbol\": \"BTC\", \n        \"website_slug\": \"bitcoin\", \n
+        \       \"rank\": 1, \n        \"circulating_supply\": 17366575.0, \n        \"total_supply\":
+        17366575.0, \n        \"max_supply\": 21000000.0, \n        \"quotes\": {\n
+        \           \"USD\": {\n                \"price\": 6458.27927099, \n                \"volume_24h\":
+        4714492603.07292, \n                \"market_cap\": 112158191331.0, \n                \"percent_change_1h\":
+        0.19, \n                \"percent_change_24h\": -0.94, \n                \"percent_change_7d\":
+        1.24\n            }, \n            \"GBP\": {\n                \"price\":
+        4944.3811105187, \n                \"volume_24h\": 3609358963.0013947, \n
+        \               \"market_cap\": 85866965384.0, \n                \"percent_change_1h\":
+        0.19, \n                \"percent_change_24h\": -0.94, \n                \"percent_change_7d\":
+        1.24\n            }\n        }, \n        \"last_updated\": 1541727562\n    },
+        \n    \"metadata\": {\n        \"timestamp\": 1541726877, \n        \"error\":
+        null\n    }\n}"
+    http_version: 
+  recorded_at: Fri, 09 Nov 2018 01:44:01 GMT
+recorded_with: VCR 4.0.0

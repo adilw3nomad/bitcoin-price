@@ -3,12 +3,12 @@ require_relative '../spec_helper'
 describe CoinMarketCapWrapper::Ticker do
   let(:bitcoin_gbp_ticker) { CoinMarketCapWrapper::Ticker.new(crypto_id: '1', currency: 'GBP') }
   let(:ticker) { CoinMarketCapWrapper::Ticker }
-  
-  describe 'default attributes' do 
+
+  describe 'default attributes' do
     it 'should include HTTParty methods' do
       ticker.must_include HTTParty
     end
-  
+
     it 'should have a base uri set to the CoinMarketCap API' do
       ticker.base_uri.must_equal 'https://api.coinmarketcap.com/v2'
     end
@@ -32,8 +32,8 @@ describe CoinMarketCapWrapper::Ticker do
     end
 
     # Because we are making building URIs, we can't have spaces in query params
-    it 'must strip any whitespace from arguments' do 
-      ticker_args_have_whitespace = ticker.new(crypto_id: '    1', currency: '   G B P' )
+    it 'must strip any whitespace from arguments' do
+      ticker_args_have_whitespace = ticker.new(crypto_id: '    1', currency: '   G B P')
       ticker_args_have_whitespace.crypto_id.must_equal '1'
       ticker_args_have_whitespace.currency.must_equal 'GBP'
     end
@@ -41,13 +41,12 @@ describe CoinMarketCapWrapper::Ticker do
 
   describe '#price_info' do
     it 'should receive a 200 response with a hash of details when called with a valid ID' do
-      VCR.use_cassette('bitcoin_ticker_response', record: :new_episodes) do
+      VCR.use_cassette('bitcoin_gbp_response', record: :new_episodes) do
         response = bitcoin_gbp_ticker.price_info
         response.code.must_equal 200
         response['data'].must_be_instance_of Hash
       end
     end
-  
 
     it 'should receive a 404 if called with an invalid ID' do
       VCR.use_cassette('non_existent_ticker_response', record: :new_episodes) do
@@ -72,9 +71,18 @@ describe CoinMarketCapWrapper::Ticker do
     end
   end
 
-  # describe '#ticker_data' do
-  #   it 'must have a ticker_data method' do
-  #     bitcoin_gbp_ticker.must_respond_to :ticker_data
-  #   end
-  # end
+  describe 'dynamic attributes' do
+    before do
+      VCR.insert_cassette('bitcoin_ticker_reponse', record: :new_episodes)
+      bitcoin_gbp_ticker.price_info
+    end
+
+    after do
+      VCR.eject_cassette('bitcoin_ticker_response')
+    end
+
+    it 'must return attribute value if present in price info' do
+      bitcoin_gbp_ticker.price_info.id.must_include '1'
+    end
+  end
 end
