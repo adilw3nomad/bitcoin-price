@@ -73,16 +73,21 @@ describe CoinMarketCapWrapper::Ticker do
   
   describe 'dynamic attributes' do
     before do
-      VCR.insert_cassette('bitcoin_ticker_reponse', record: :new_episodes)
+      VCR.insert_cassette('bitcoin_gbp_response', record: :new_episodes)
       bitcoin_gbp_ticker.price_info
     end
 
     after do
-      VCR.eject_cassette('bitcoin_ticker_response')
+      VCR.eject_cassette('bitcoin_gbp_response')
     end
 
     it 'must return attribute value if present in price info' do
       bitcoin_gbp_ticker.id.must_equal 1
+    end
+
+    it 'must return a quotes hash if present in price info' do 
+      bitcoin_gbp_ticker.quotes.must_be_instance_of Hash
+      bitcoin_gbp_ticker.quotes.keys.must_include "USD"
     end
 
     it 'must raise method missing if attribute is not present' do
