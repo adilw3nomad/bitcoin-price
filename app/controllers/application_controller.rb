@@ -6,6 +6,12 @@ class ApplicationController < Sinatra::Base
   set :views, proc{ File.join(root, '../views') }
 
   get '/' do
-    'hello world' 
+    erb :index
+  end
+
+  post '/price' do 
+    ticker = CoinMarketCapWrapper::Ticker.new(crypto_id: '1', currency: params[:currency])
+    price = ticker.quotes[ticker.currency]
+    erb :show, :locals => {'price' => price, 'currency' => ticker.currency }
   end
 end

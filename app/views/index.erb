@@ -1,0 +1,22 @@
+<div>
+  <h1>What is the price of bitcoin?</h1>
+  <p>Select a currency from the drop down to see what the price is!</p>
+</div>
+
+<% if @price %>
+  <div>
+    <p>The price of bitcoin is <%= @price %> <%= @currency %> </p>
+  </div>
+<% end %>
+
+<div>
+  <form action='/price' method='POST'>
+    <select name='currency'>
+      <option value="EUR">Euros €</option>
+      <option value="GBP">British Pounds £</option>
+      <option value="USD">United Stated Dollar $</option>
+      <option value="CNY">Chinese Yuan ¥</option>
+    </select>
+    <input type='submit'>
+  </form>
+</div>
