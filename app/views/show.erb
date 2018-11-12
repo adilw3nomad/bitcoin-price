@@ -1,5 +1,5 @@
 <div>
-  <p>The price of bitcoin is <%= price['price'].round(2) %> <%= currency %> </p>
+  <p>The price of bitcoin is <%= price['price'].round(2) %> <%= currency %> as of <%= DateTime.strptime(timestamp.to_s, '%s').strftime('%c') %> </p>
 </div>
 
 <a href='/'>Click to go back!</a>

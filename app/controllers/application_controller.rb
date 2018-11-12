@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
   post '/price' do 
     ticker = CoinMarketCapWrapper::Ticker.new(crypto_id: '1', currency: params[:currency])
     price = ticker.quotes[ticker.currency]
-    erb :show, :locals => {'price' => price, 'currency' => ticker.currency }
+    timestamp = ticker.last_updated
+    erb :show, :locals => {'price' => price, 'currency' => ticker.currency, 'timestamp' => timestamp }
   end
 end
