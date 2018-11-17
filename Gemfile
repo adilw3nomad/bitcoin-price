@@ -13,5 +13,5 @@ group :test do
   gem 'minitest-reporters'
   gem 'webmock'
   gem 'vcr'
-  gem 'rake'
+  gem "rack", ">= 2.0.6"
 end
